@@ -73,7 +73,7 @@ local function write_string_at_cursor(str)
 	local row, col = cursor_position[1], cursor_position[2]
 
 	local lines = vim.split(str, "\n")
-	vim.api.nvim_put(lines, "c", true, true)
+	vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, lines)
 
 	local num_lines = #lines
 	local last_line_length = #lines[num_lines]
